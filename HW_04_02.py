@@ -1,24 +1,9 @@
-class TrieNode:
-    def __init__(self):
-        self.children = {}
-        self.is_end = False
-
-class Trie:
-    def __init__(self):
-        self.root = TrieNode()
-
-    def put(self, word, value=None):
-        node = self.root
-        for char in word:
-            if char not in node.children:
-                node.children[char] = TrieNode()
-            node = node.children[char]
-        node.is_end = True
+from trie import Trie
 
 class Homework(Trie):
     def count_words_with_suffix(self, pattern) -> int:
         if not isinstance(pattern, str):
-            raise ValueError("Pattern must be a string")
+            raise ValueError("Префікс повинен бути рядком")
 
         count = 0
         def dfs(node, word):
@@ -33,7 +18,7 @@ class Homework(Trie):
 
     def has_prefix(self, prefix) -> bool:
         if not isinstance(prefix, str):
-            raise ValueError("Prefix must be a string")
+            raise ValueError("Префікс повинен бути рядком")
 
         node = self.root
         for char in prefix:
